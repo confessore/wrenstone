@@ -1,0 +1,96 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32414.318
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{75238FFC-103E-454D-BD4C-9A06143C7623}"
+	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		docker-compose-debug.yml = docker-compose-debug.yml
+		LICENSE.md = LICENSE.md
+		nginx-debug.Dockerfile = nginx-debug.Dockerfile
+		README.md = README.md
+		web-debug.Dockerfile = web-debug.Dockerfile
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DEF47856-65AD-4115-A190-82D4EE4A75A0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wrenstone", "src\wrenstone\wrenstone.csproj", "{1A4E34A0-94AB-4A78-A510-59015852BAD2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nginx", "nginx", "{CA246A11-BC82-4185-BF46-B255786B962B}"
+	ProjectSection(SolutionItems) = preProject
+		nginx\nginx-debug.conf = nginx\nginx-debug.conf
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "openssl", "openssl", "{E237E903-4783-47AE-A979-065152224280}"
+	ProjectSection(SolutionItems) = preProject
+		openssl\localhost.cer = openssl\localhost.cer
+		openssl\localhost.conf = openssl\localhost.conf
+		openssl\localhost.crt = openssl\localhost.crt
+		openssl\localhost.key = openssl\localhost.key
+		openssl\localhost.pfx = openssl\localhost.pfx
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "secrets", "secrets", "{F4520B77-575D-47EC-A060-490973AC7930}"
+	ProjectSection(SolutionItems) = preProject
+		secrets\discord-bottoken = secrets\discord-bottoken
+		secrets\discord-bottoken.default = secrets\discord-bottoken.default
+		secrets\smtp-fromaddress = secrets\smtp-fromaddress
+		secrets\smtp-fromaddress.default = secrets\smtp-fromaddress.default
+		secrets\smtp-fromname = secrets\smtp-fromname
+		secrets\smtp-fromname.default = secrets\smtp-fromname.default
+		secrets\smtp-host = secrets\smtp-host
+		secrets\smtp-host.default = secrets\smtp-host.default
+		secrets\smtp-password = secrets\smtp-password
+		secrets\smtp-password.default = secrets\smtp-password.default
+		secrets\smtp-port = secrets\smtp-port
+		secrets\smtp-port.default = secrets\smtp-port.default
+		secrets\smtp-username = secrets\smtp-username
+		secrets\smtp-username.default = secrets\smtp-username.default
+		secrets\sql-database = secrets\sql-database
+		secrets\sql-password = secrets\sql-password
+		secrets\sql-password.default = secrets\sql-password.default
+		secrets\sql-server = secrets\sql-server
+		secrets\sql-server.default = secrets\sql-server.default
+		secrets\sql-username = secrets\sql-username
+		secrets\sql-username.default = secrets\sql-username.default
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{E0E13EA9-7251-4D4A-B429-EFA368E66B96}"
+	ProjectSection(SolutionItems) = preProject
+		scripts\add-migration-default.sh = scripts\add-migration-default.sh
+		scripts\define-secrets.sh = scripts\define-secrets.sh
+		scripts\docker-install.sh = scripts\docker-install.sh
+		scripts\healthcheck.sh = scripts\healthcheck.sh
+		scripts\nginx-entrypoint-debug.sh = scripts\nginx-entrypoint-debug.sh
+		scripts\openssl-generate.sh = scripts\openssl-generate.sh
+		scripts\purify-migrations-default.sh = scripts\purify-migrations-default.sh
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1A4E34A0-94AB-4A78-A510-59015852BAD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A4E34A0-94AB-4A78-A510-59015852BAD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A4E34A0-94AB-4A78-A510-59015852BAD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A4E34A0-94AB-4A78-A510-59015852BAD2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DEF47856-65AD-4115-A190-82D4EE4A75A0} = {75238FFC-103E-454D-BD4C-9A06143C7623}
+		{1A4E34A0-94AB-4A78-A510-59015852BAD2} = {DEF47856-65AD-4115-A190-82D4EE4A75A0}
+		{CA246A11-BC82-4185-BF46-B255786B962B} = {75238FFC-103E-454D-BD4C-9A06143C7623}
+		{E237E903-4783-47AE-A979-065152224280} = {75238FFC-103E-454D-BD4C-9A06143C7623}
+		{F4520B77-575D-47EC-A060-490973AC7930} = {75238FFC-103E-454D-BD4C-9A06143C7623}
+		{E0E13EA9-7251-4D4A-B429-EFA368E66B96} = {75238FFC-103E-454D-BD4C-9A06143C7623}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {28BBD0FD-94C1-4F5C-9316-68D6E7550608}
+	EndGlobalSection
+EndGlobal
