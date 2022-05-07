@@ -61,11 +61,12 @@ if you kinda-sorta already know what you are doing, you can install docker and d
 
 * build and run the composition
 ```sh
-    $ sudo docker-compose build
-    $ sudo docker-compose up -d
+    $ sudo docker-compose -f docker-compose-debug.yml build
+    $ sudo docker-compose -f docker-compose-debug.yml up -d
 ```
 
 &nbsp;
+
 
 ## **afterthoughts**
 
