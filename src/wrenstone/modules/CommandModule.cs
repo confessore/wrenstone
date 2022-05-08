@@ -1,8 +1,9 @@
 ﻿using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
+using Microsoft.EntityFrameworkCore;
 using Serilog;
-using wrenstone.models.characters;
+using wrenstone.contexts;
 using wrenstone.services;
 
 namespace wrenstone.modules
@@ -14,19 +15,22 @@ namespace wrenstone.modules
         readonly CommandService _commands;
         readonly RoleService _role;
         readonly ArmoryService _armory;
+        readonly IDbContextFactory<DefaultDbContext> _defaultDbContextFactory;
 
         public CommandModule(
             IServiceProvider services,
             DiscordSocketClient client,
             CommandService commands,
             RoleService role,
-            ArmoryService armory)
+            ArmoryService armory,
+            IDbContextFactory<DefaultDbContext> defaultDbContextFactory)
         {
             _services = services;
             _client = client;
             _commands = commands;
             _role = role;
             _armory = armory;
+            _defaultDbContextFactory = defaultDbContextFactory;
         }
 
         readonly Random random = new Random();
