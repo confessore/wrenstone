@@ -70,7 +70,9 @@ namespace wrenstone.modules
             await RemoveCommandMessageAsync();
             var user = _client.GetGuild(Context.Guild.Id).GetUser(Context.User.Id);
             var character = await _armory.LookupCharacterAsync(user.Nickname ?? user.Username);
+            await _role.UpdateFactionRoleAsync(Context.Guild, (SocketGuildUser)Context.User, character.FactionId is 1 ? "horde" : "alliance");
             await _role.UpdateClassRoleAsync(Context.Guild, (SocketGuildUser)Context.User, character.Class ?? string.Empty);
+            Log.Information($"{(character.FactionId is 1 ? "horde" : "alliance")} role was added for {character.Name.ToLower()}");
             Log.Information($"{character.Class.ToLower()} role was added for {character.Name.ToLower()}");
             //await ReplyAsync($"{character.Name} is a {character.Level} {character.Race} {character.Class} in the guild {character.GuildName}");
             //await htmlService.VerifyGuildMemberAsync(Context.Guild, user, user.Nickname ?? user.Username);
