@@ -65,11 +65,10 @@ namespace wrenstone.modules
             await _client.GetGuild(Context.Guild.Id).GetUser(Context.User.Id).ModifyAsync(x => x.Nickname = name);
         }
 
-        [Command("verify", RunMode = RunMode.Async)]
-        [Summary("all: updates a single guild user's membership role according to their nickname (character name)" +
-            "\n >verify" +
-            "\n >verify")]
-        async Task VerifyAsync()
+        [Command("sync", RunMode = RunMode.Async)]
+        [Summary("all: sync a single guild user's membership role according to their nickname (character name)" +
+            "\n >sync")]
+        async Task SyncAsync()
         {
             await RemoveCommandMessageAsync();
             var user = _client.GetGuild(Context.Guild.Id).GetUser(Context.User.Id);
@@ -79,12 +78,35 @@ namespace wrenstone.modules
             using var context = await _defaultDbContextFactory.CreateDbContextAsync();
             if (context.Users != null)
             {
-
+                var contextUser = await context.Users.Include(x => x.Id).FirstOrDefaultAsync(x => x.Id == user.Id);
+                if (contextUser != null)
+                {
+                    contextUser.UserType = 0;
+                    await context.SaveChangesAsync();
+                }
             }
             Log.Information($"{(character.FactionId is 1 ? "horde" : "alliance")} role was added for {character.Name.ToLower()}");
             Log.Information($"{character.Class.ToLower()} role was added for {character.Name.ToLower()}");
             //await ReplyAsync($"{character.Name} is a {character.Level} {character.Race} {character.Class} in the guild {character.GuildName}");
             //await htmlService.VerifyGuildMemberAsync(Context.Guild, user, user.Nickname ?? user.Username);
+        }
+
+        [Command("tip", RunMode = RunMode.Async)]
+        [Summary("all: tips a user" +
+            "\n >tip" +
+            "\n >tip feeram")]
+        async Task TipAsync([Remainder] string name)
+        {
+            await RemoveCommandMessageAsync();
+        }
+
+        [Command("droll", RunMode = RunMode.Async)]
+        [Summary("all: begins a death roll with the specified name at the specified wager" +
+            "\n >droll" +
+            "\n >droll feeram 69")]
+        async Task DeathRollAsync([Remainder] string name, [Remainder] int wager)
+        {
+            await RemoveCommandMessageAsync();
         }
 
         async Task RemoveCommandMessageAsync() =>

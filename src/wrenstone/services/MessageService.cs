@@ -42,7 +42,7 @@ namespace wrenstone.services
             var dmc = await user.CreateDMChannelAsync();
             await dmc.SendMessageAsync("welcome to the wrenstone mining company!\n" +
                 "please change your discord name to reflect your main in-game character name.\n" +
-                "when you have done this, type the command '>verify' in a server channel for your roles to be applied.");
+                "when you have done this, type the command '>sync' in a server channel for your roles to be applied.");
         }
     }
 }
