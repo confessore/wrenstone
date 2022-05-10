@@ -1,4 +1,4 @@
-﻿using System.Text.Json;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using wrenstone.models.abstractions;
 using wrenstone.models.characters;

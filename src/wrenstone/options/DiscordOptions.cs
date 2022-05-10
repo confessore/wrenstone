@@ -1,4 +1,4 @@
-﻿namespace wrenstone.options
+namespace wrenstone.options
 {
     sealed class DiscordOptions
     {

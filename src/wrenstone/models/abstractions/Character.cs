@@ -1,4 +1,4 @@
-﻿using System.Text.Json.Serialization;
+using System.Text.Json.Serialization;
 using wrenstone.converters;
 using wrenstone.models.enums;
 using wrenstone.models.interfaces;

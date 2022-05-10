@@ -1,4 +1,4 @@
-﻿using wrenstone.models.enums;
+using wrenstone.models.enums;
 
 namespace wrenstone.models.interfaces
 {

@@ -1,4 +1,4 @@
-﻿using Discord.WebSocket;
+using Discord.WebSocket;
 using HtmlAgilityPack;
 using Serilog;
 using System.Text;

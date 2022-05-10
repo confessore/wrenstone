@@ -1,9 +1,12 @@
-﻿using Discord;
+using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 using wrenstone.contexts;
+using wrenstone.models.characters;
+using wrenstone.models.enums;
+using wrenstone.models.users;
 using wrenstone.services;
 
 namespace wrenstone.modules
@@ -73,17 +76,20 @@ namespace wrenstone.modules
             await RemoveCommandMessageAsync();
             var user = _client.GetGuild(Context.Guild.Id).GetUser(Context.User.Id);
             var character = await _armory.LookupCharacterAsync(user.Nickname ?? user.Username);
+            character.Id = user.Id;
             await _role.UpdateFactionRoleAsync(Context.Guild, (SocketGuildUser)Context.User, character.FactionId is 1 ? "horde" : "alliance");
             await _role.UpdateClassRoleAsync(Context.Guild, (SocketGuildUser)Context.User, character.Class ?? string.Empty);
             using var context = await _defaultDbContextFactory.CreateDbContextAsync();
             if (context.Users != null)
             {
-                var contextUser = await context.Users.Include(x => x.Id).FirstOrDefaultAsync(x => x.Id == user.Id);
-                if (contextUser != null)
+                var contextUser = await context.Users.Include(x => x.Character).FirstOrDefaultAsync(x => x.Id == user.Id);
+                if (contextUser == null)
                 {
-                    contextUser.UserType = 0;
-                    await context.SaveChangesAsync();
+                    context.Users.Add(new DefaultUser() { Id = user.Id, UserType = UserType.Default, Character = character, Chits = 0 });
                 }
+                else
+                    contextUser.Character = character;
+                await context.SaveChangesAsync();
             }
             Log.Information($"{(character.FactionId is 1 ? "horde" : "alliance")} role was added for {character.Name.ToLower()}");
             Log.Information($"{character.Class.ToLower()} role was added for {character.Name.ToLower()}");
@@ -100,11 +106,20 @@ namespace wrenstone.modules
             await RemoveCommandMessageAsync();
         }
 
+        [Command("grant", RunMode = RunMode.Async)]
+        [Summary("bot: grants a user for exceptional distinguishment" +
+            "\n >grant" +
+            "\n >grant feeram")]
+        async Task GrantAsync([Remainder] string name)
+        {
+            await RemoveCommandMessageAsync();
+        }
+
         [Command("droll", RunMode = RunMode.Async)]
         [Summary("all: begins a death roll with the specified name at the specified wager" +
             "\n >droll" +
             "\n >droll feeram 69")]
-        async Task DeathRollAsync([Remainder] string name, [Remainder] int wager)
+        async Task DeathRollAsync([Remainder] string name)
         {
             await RemoveCommandMessageAsync();
         }

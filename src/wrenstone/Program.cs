@@ -44,7 +44,7 @@ var discordOptions = new DiscordOptions();
 configuration.GetSection("APPLICATION:DISCORDOPTIONS").Bind(discordOptions);
 var options = new WebApplicationOptions()
 {
-    ApplicationName = Strings.CallingAssemblyName,
+    ApplicationName = Strings.ExecutingAssemblyName,
     Args = args,
     WebRootPath = "wwwroot"
 };
@@ -62,7 +62,7 @@ builder.WebHost
         {
             x.UseMySql(defaultConnection, ServerVersion.AutoDetect(defaultConnection), x =>
             {
-                x.MigrationsAssembly(Strings.CallingAssemblyName);
+                x.MigrationsAssembly(Strings.ExecutingAssemblyName);
             });
             x.EnableSensitiveDataLogging();
             x.EnableDetailedErrors();
@@ -71,7 +71,7 @@ builder.WebHost
         {
             x.UseMySql(defaultConnection, ServerVersion.AutoDetect(defaultConnection), x =>
             {
-                x.MigrationsAssembly(Strings.CallingAssemblyName);
+                x.MigrationsAssembly(Strings.ExecutingAssemblyName);
             });
             x.EnableSensitiveDataLogging();
             x.EnableDetailedErrors();

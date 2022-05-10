@@ -1,4 +1,4 @@
-﻿namespace wrenstone.services
+namespace wrenstone.services
 {
     public class UserService
     {

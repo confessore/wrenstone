@@ -1,4 +1,4 @@
-﻿using wrenstone.models.abstractions;
+using wrenstone.models.abstractions;
 using wrenstone.models.interfaces;
 
 namespace wrenstone.models.characters

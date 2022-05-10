@@ -12,5 +12,7 @@ namespace wrenstone.models.abstractions
         public User() { }
 
         public UserType UserType { get; set; }
+        public virtual Character? Character { get; set; }
+        public virtual int? Chits { get; set; }
     }
 }
