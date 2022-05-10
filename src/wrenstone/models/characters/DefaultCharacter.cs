@@ -1,8 +1,9 @@
 ﻿using wrenstone.models.abstractions;
+using wrenstone.models.interfaces;
 
 namespace wrenstone.models.characters
 {
-    public class DefaultCharacter : Character
+    public class DefaultCharacter : Character, IEntity<ulong>, ICharacter
     {
         public string? Name { get; set; }
         public int? FactionId { get; set; }

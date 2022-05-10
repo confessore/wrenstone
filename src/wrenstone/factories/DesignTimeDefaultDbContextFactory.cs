@@ -28,7 +28,7 @@ namespace wrenstone.factories
                 var optionsBuilder = new DbContextOptionsBuilder<DefaultDbContext>()
                     .UseMySql(connection, ServerVersion.AutoDetect(connection), x =>
                     {
-                        x.MigrationsAssembly(Assembly.GetCallingAssembly().GetName().Name);
+                        x.MigrationsAssembly(Assembly.GetExecutingAssembly().GetName().Name);
                     });
                 return new DefaultDbContext(optionsBuilder.Options);
             }).Result;

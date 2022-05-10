@@ -1,8 +1,8 @@
 namespace wrenstone.models.interfaces
 {
-    public interface IEntity<TKey>
-        where TKey : IEquatable<TKey>
+    public interface IEntity<TId>
+        where TId : IEquatable<TId>
     {
-        TKey? Id { get; set; }
+        public TId? Id { get; set; }
     }
 }

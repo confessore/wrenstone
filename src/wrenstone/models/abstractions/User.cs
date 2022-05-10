@@ -5,8 +5,8 @@ using wrenstone.models.interfaces;
 
 namespace wrenstone.models.abstractions
 {
-    [JsonConverter(typeof(UserConverter))]
-    public abstract class User : Entity<string>, IUser
+    [JsonConverter(typeof(CharacterConverter))]
+    public abstract class User : Entity<ulong>, IEntity<ulong>, IUser
     {
         [JsonConstructor]
         public User() { }
